@@ -104,6 +104,7 @@ import org.fossify.calendar.helpers.SOURCE_SIMPLE_CALENDAR
 import org.fossify.calendar.helpers.START_TS
 import org.fossify.calendar.helpers.STATUS
 import org.fossify.calendar.helpers.STORED_LOCALLY_ONLY
+import org.fossify.calendar.helpers.ScreenTags
 import org.fossify.calendar.helpers.TIME_ZONE
 import org.fossify.calendar.helpers.generateImportId
 import org.fossify.calendar.models.Attendee
@@ -1881,6 +1882,7 @@ class EventActivity : SimpleActivity() {
 
         datePicker.datePicker.firstDayOfWeek = getJavaDayOfWeekFromISO(config.firstDayOfWeek)
         datePicker.show()
+        ScreenTags.tagDialog(datePicker, R.id.screen_tag_EventActivity_DatePicker)
     }
 
     private fun setupStartTime() {
@@ -1903,6 +1905,7 @@ class EventActivity : SimpleActivity() {
                 timeSet(timePicker.hour, timePicker.minute, true)
             }
 
+            ScreenTags.tagDialogFragment(timePicker, R.id.screen_tag_EventActivity_TimePicker)
             timePicker.show(supportFragmentManager, "")
         } else {
             TimePickerDialog(
@@ -1912,7 +1915,10 @@ class EventActivity : SimpleActivity() {
                 mEventStartDateTime.hourOfDay,
                 mEventStartDateTime.minuteOfHour,
                 config.use24HourFormat
-            ).show()
+            ).also {
+                it.show()
+                ScreenTags.tagDialog(it, R.id.screen_tag_EventActivity_TimePicker)
+            }
         }
     }
 
@@ -1929,6 +1935,7 @@ class EventActivity : SimpleActivity() {
 
         datePicker.datePicker.firstDayOfWeek = getJavaDayOfWeekFromISO(config.firstDayOfWeek)
         datePicker.show()
+        ScreenTags.tagDialog(datePicker, R.id.screen_tag_EventActivity_DatePicker)
     }
 
     private fun setupEndTime() {
@@ -1951,6 +1958,7 @@ class EventActivity : SimpleActivity() {
                 timeSet(timePicker.hour, timePicker.minute, false)
             }
 
+            ScreenTags.tagDialogFragment(timePicker, R.id.screen_tag_EventActivity_TimePicker)
             timePicker.show(supportFragmentManager, "")
         } else {
             TimePickerDialog(
@@ -1960,7 +1968,10 @@ class EventActivity : SimpleActivity() {
                 mEventEndDateTime.hourOfDay,
                 mEventEndDateTime.minuteOfHour,
                 config.use24HourFormat
-            ).show()
+            ).also {
+                it.show()
+                ScreenTags.tagDialog(it, R.id.screen_tag_EventActivity_TimePicker)
+            }
         }
     }
 

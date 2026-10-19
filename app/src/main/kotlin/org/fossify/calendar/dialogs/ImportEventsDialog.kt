@@ -13,6 +13,7 @@ import org.fossify.calendar.helpers.IcsImporter.ImportResult.IMPORT_NOTHING_NEW
 import org.fossify.calendar.helpers.IcsImporter.ImportResult.IMPORT_OK
 import org.fossify.calendar.helpers.IcsImporter.ImportResult.IMPORT_PARTIAL
 import org.fossify.calendar.helpers.LOCAL_CALENDAR_ID
+import org.fossify.calendar.helpers.ScreenTags
 import org.fossify.commons.extensions.getAlertDialogBuilder
 import org.fossify.commons.extensions.getProperBackgroundColor
 import org.fossify.commons.extensions.setFillWithStroke
@@ -91,6 +92,7 @@ class ImportEventsDialog(
             .setPositiveButton(org.fossify.commons.R.string.ok, null)
             .setNegativeButton(org.fossify.commons.R.string.cancel, null)
             .apply {
+                ScreenTags.tagDialogOf(binding.root, R.id.screen_tag_ImportEventsDialog)
                 activity.setupDialogStuff(
                     view = binding.root,
                     dialog = this,

@@ -9,6 +9,7 @@ import org.fossify.calendar.helpers.ANNIVERSARY_EVENT
 import org.fossify.calendar.helpers.BIRTHDAY_EVENT
 import org.fossify.calendar.helpers.OTHER_EVENT
 import org.fossify.calendar.helpers.REMINDER_OFF
+import org.fossify.calendar.helpers.ScreenTags
 import org.fossify.commons.dialogs.PermissionRequiredDialog
 import org.fossify.commons.extensions.applyColorFilter
 import org.fossify.commons.extensions.beVisible
@@ -109,6 +110,7 @@ class SetRemindersDialog(
             .setPositiveButton(org.fossify.commons.R.string.ok) { _, _ -> dialogConfirmed() }
             .setNegativeButton(org.fossify.commons.R.string.cancel, null)
             .apply {
+                ScreenTags.tagDialogOf(binding.root, R.id.screen_tag_SetRemindersDialog)
                 activity.setupDialogStuff(binding.root, this, R.string.event_reminders)
             }
     }

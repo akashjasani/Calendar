@@ -8,6 +8,7 @@ import org.fossify.calendar.databinding.DialogCalendarBinding
 import org.fossify.calendar.extensions.calDAVHelper
 import org.fossify.calendar.extensions.eventsHelper
 import org.fossify.calendar.helpers.OTHER_EVENT
+import org.fossify.calendar.helpers.ScreenTags
 import org.fossify.calendar.models.CalendarEntity
 import org.fossify.commons.dialogs.ColorPickerDialog
 import org.fossify.commons.extensions.getAlertDialogBuilder
@@ -68,6 +69,7 @@ class EditCalendarDialog(
             .setPositiveButton(org.fossify.commons.R.string.ok, null)
             .setNegativeButton(org.fossify.commons.R.string.cancel, null)
             .apply {
+                ScreenTags.tagDialogOf(binding.root, R.id.screen_tag_EditCalendarDialog)
                 activity.setupDialogStuff(
                     view = binding.root,
                     dialog = this,

@@ -1,10 +1,12 @@
 package org.fossify.calendar.dialogs
 
 import androidx.appcompat.app.AlertDialog
+import org.fossify.calendar.R
 import org.fossify.calendar.activities.SimpleActivity
 import org.fossify.calendar.adapters.FilterCalendarAdapter
 import org.fossify.calendar.databinding.DialogFilterCalendarsBinding
 import org.fossify.calendar.extensions.eventsHelper
+import org.fossify.calendar.helpers.ScreenTags
 import org.fossify.commons.extensions.getAlertDialogBuilder
 import org.fossify.commons.extensions.setupDialogStuff
 import org.fossify.commons.extensions.viewBinding
@@ -26,6 +28,7 @@ class SelectCalendarsDialog(
                 .setPositiveButton(org.fossify.commons.R.string.ok) { _, _ -> confirmCalendars() }
                 .setNegativeButton(org.fossify.commons.R.string.cancel, null)
                 .apply {
+                    ScreenTags.tagDialogOf(binding.root, R.id.screen_tag_SelectCalendarsDialog)
                     activity.setupDialogStuff(binding.root, this) { alertDialog ->
                         dialog = alertDialog
                     }

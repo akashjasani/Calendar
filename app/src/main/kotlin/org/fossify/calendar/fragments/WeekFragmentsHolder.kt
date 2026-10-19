@@ -11,12 +11,14 @@ import android.widget.DatePicker
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.viewpager.widget.ViewPager
+import org.fossify.calendar.R
 import org.fossify.calendar.activities.MainActivity
 import org.fossify.calendar.adapters.MyWeekPagerAdapter
 import org.fossify.calendar.databinding.FragmentWeekHolderBinding
 import org.fossify.calendar.databinding.WeeklyViewHourTextviewBinding
 import org.fossify.calendar.extensions.*
 import org.fossify.calendar.helpers.Formatter
+import org.fossify.calendar.helpers.ScreenTags
 import org.fossify.calendar.helpers.WEEKLY_VIEW
 import org.fossify.calendar.helpers.WEEK_START_DATE_TIME
 import org.fossify.calendar.interfaces.WeekFragmentListener
@@ -182,6 +184,7 @@ class WeekFragmentsHolder : MyFragmentHolder(), WeekFragmentListener {
             .setNegativeButton(org.fossify.commons.R.string.cancel, null)
             .setPositiveButton(org.fossify.commons.R.string.ok) { _, _ -> dateSelected(dateTime, datePicker) }
             .apply {
+                ScreenTags.tagDialogOf(datePicker, R.id.screen_tag_GoToDateDialog)
                 activity?.setupDialogStuff(datePicker, this)
             }
     }

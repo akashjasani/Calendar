@@ -7,6 +7,7 @@ import org.fossify.calendar.databinding.DialogDeleteEventBinding
 import org.fossify.calendar.helpers.DELETE_ALL_OCCURRENCES
 import org.fossify.calendar.helpers.DELETE_FUTURE_OCCURRENCES
 import org.fossify.calendar.helpers.DELETE_SELECTED_OCCURRENCE
+import org.fossify.calendar.helpers.ScreenTags
 import org.fossify.commons.extensions.beVisibleIf
 import org.fossify.commons.extensions.getAlertDialogBuilder
 import org.fossify.commons.extensions.setupDialogStuff
@@ -45,6 +46,7 @@ class DeleteEventDialog(
             .setPositiveButton(org.fossify.commons.R.string.yes) { _, _ -> dialogConfirmed(binding) }
             .setNegativeButton(org.fossify.commons.R.string.no, null)
             .apply {
+                ScreenTags.tagDialogOf(binding.root, R.id.screen_tag_DeleteEventDialog)
                 activity.setupDialogStuff(binding.root, this) { alertDialog ->
                     dialog = alertDialog
                 }

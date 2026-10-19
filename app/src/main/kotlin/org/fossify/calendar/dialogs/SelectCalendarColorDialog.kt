@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog
 import org.fossify.calendar.R
 import org.fossify.calendar.adapters.CheckableColorAdapter
 import org.fossify.calendar.databinding.DialogSelectColorBinding
+import org.fossify.calendar.helpers.ScreenTags
 import org.fossify.calendar.views.AutoGridLayoutManager
 import org.fossify.commons.dialogs.ColorPickerDialog
 import org.fossify.commons.extensions.getAlertDialogBuilder
@@ -37,6 +38,7 @@ class SelectCalendarColorDialog(
         activity.getAlertDialogBuilder()
             .setNegativeButton(org.fossify.commons.R.string.cancel, null)
             .apply {
+                ScreenTags.tagDialogOf(binding.root, R.id.screen_tag_SelectCalendarColorDialog)
                 activity.setupDialogStuff(binding.root, this, R.string.color) {
                     dialog = it
                 }

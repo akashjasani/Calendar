@@ -4,6 +4,7 @@ import android.app.Activity
 import androidx.appcompat.app.AlertDialog
 import org.fossify.calendar.R
 import org.fossify.calendar.databinding.DialogCustomPeriodPickerBinding
+import org.fossify.calendar.helpers.ScreenTags
 import org.fossify.commons.extensions.*
 import org.fossify.commons.helpers.DAY_SECONDS
 import org.fossify.commons.helpers.MONTH_SECONDS
@@ -20,6 +21,7 @@ class CustomPeriodPickerDialog(val activity: Activity, val callback: (value: Int
             .setPositiveButton(org.fossify.commons.R.string.ok) { _, _ -> confirmReminder() }
             .setNegativeButton(org.fossify.commons.R.string.cancel, null)
             .apply {
+                ScreenTags.tagDialogOf(binding.root, R.id.screen_tag_WidgetListConfigureActivity_CustomPeriodPickerDialog)
                 activity.setupDialogStuff(binding.root, this) { alertDialog ->
                     dialog = alertDialog
                     alertDialog.showKeyboard(binding.dialogCustomPeriodValue)

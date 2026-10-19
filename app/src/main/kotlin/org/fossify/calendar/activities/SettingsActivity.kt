@@ -62,6 +62,7 @@ import org.fossify.calendar.helpers.SHOW_GRID
 import org.fossify.calendar.helpers.SHOW_MIDNIGHT_SPANNING_EVENTS_AT_TOP
 import org.fossify.calendar.helpers.START_WEEKLY_AT
 import org.fossify.calendar.helpers.START_WEEK_WITH_CURRENT_DAY
+import org.fossify.calendar.helpers.ScreenTags
 import org.fossify.calendar.helpers.USE_PREVIOUS_EVENT_REMINDERS
 import org.fossify.calendar.helpers.VIBRATE
 import org.fossify.calendar.helpers.WEEKLY_VIEW
@@ -966,6 +967,7 @@ class SettingsActivity : SimpleActivity() {
                             updateDefaultStartTimeText()
                         }
 
+                        ScreenTags.tagDialogFragment(timePicker, R.id.screen_tag_SettingsActivity_TimePicker)
                         timePicker.show(supportFragmentManager, "")
                     } else {
                         TimePickerDialog(
@@ -975,7 +977,10 @@ class SettingsActivity : SimpleActivity() {
                             currentDateTime.hourOfDay,
                             currentDateTime.minuteOfHour,
                             config.use24HourFormat
-                        ).show()
+                        ).also {
+                            it.show()
+                            ScreenTags.tagDialog(it, R.id.screen_tag_SettingsActivity_TimePicker)
+                        }
                     }
                 }
             }

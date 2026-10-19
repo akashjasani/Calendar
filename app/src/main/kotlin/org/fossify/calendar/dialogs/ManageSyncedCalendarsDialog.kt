@@ -9,6 +9,7 @@ import org.fossify.calendar.databinding.CalendarItemCalendarBinding
 import org.fossify.calendar.databinding.DialogSelectCalendarsBinding
 import org.fossify.calendar.extensions.calDAVHelper
 import org.fossify.calendar.extensions.config
+import org.fossify.calendar.helpers.ScreenTags
 import org.fossify.commons.extensions.beVisibleIf
 import org.fossify.commons.extensions.getAlertDialogBuilder
 import org.fossify.commons.extensions.setupDialogStuff
@@ -41,6 +42,7 @@ class ManageSyncedCalendarsDialog(val activity: SimpleActivity, val callback: ()
             .setPositiveButton(org.fossify.commons.R.string.ok) { _, _ -> confirmSelection() }
             .setNegativeButton(org.fossify.commons.R.string.cancel, null)
             .apply {
+                ScreenTags.tagDialogOf(binding.root, R.id.screen_tag_SettingsActivity_ManageSyncedCalendarsDialog)
                 activity.setupDialogStuff(binding.root, this, R.string.select_caldav_calendars)
             }
     }

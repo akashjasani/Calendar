@@ -64,6 +64,7 @@ import org.fossify.calendar.helpers.REPEAT_ORDER_WEEKDAY_USE_LAST
 import org.fossify.calendar.helpers.REPEAT_RULE
 import org.fossify.calendar.helpers.REPEAT_SAME_DAY
 import org.fossify.calendar.helpers.START_TS
+import org.fossify.calendar.helpers.ScreenTags
 import org.fossify.calendar.helpers.TASK
 import org.fossify.calendar.helpers.TYPE_TASK
 import org.fossify.calendar.helpers.generateImportId
@@ -702,6 +703,7 @@ class TaskActivity : SimpleActivity() {
 
         datePicker.datePicker.firstDayOfWeek = getJavaDayOfWeekFromISO(config.firstDayOfWeek)
         datePicker.show()
+        ScreenTags.tagDialog(datePicker, R.id.screen_tag_TaskActivity_DatePicker)
     }
 
     private fun setupTime() {
@@ -724,6 +726,7 @@ class TaskActivity : SimpleActivity() {
                 timeSet(timePicker.hour, timePicker.minute)
             }
 
+            ScreenTags.tagDialogFragment(timePicker, R.id.screen_tag_TaskActivity_TimePicker)
             timePicker.show(supportFragmentManager, "")
         } else {
             TimePickerDialog(
@@ -733,7 +736,10 @@ class TaskActivity : SimpleActivity() {
                 mTaskDateTime.hourOfDay,
                 mTaskDateTime.minuteOfHour,
                 config.use24HourFormat
-            ).show()
+            ).also {
+                it.show()
+                ScreenTags.tagDialog(it, R.id.screen_tag_TaskActivity_TimePicker)
+            }
         }
     }
 

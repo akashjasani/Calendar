@@ -7,6 +7,7 @@ import org.fossify.calendar.databinding.DialogEditRepeatingEventBinding
 import org.fossify.calendar.helpers.EDIT_ALL_OCCURRENCES
 import org.fossify.calendar.helpers.EDIT_FUTURE_OCCURRENCES
 import org.fossify.calendar.helpers.EDIT_SELECTED_OCCURRENCE
+import org.fossify.calendar.helpers.ScreenTags
 import org.fossify.commons.extensions.getAlertDialogBuilder
 import org.fossify.commons.extensions.hideKeyboard
 import org.fossify.commons.extensions.setupDialogStuff
@@ -31,6 +32,7 @@ class EditRepeatingEventDialog(val activity: SimpleActivity, val isTask: Boolean
 
         activity.getAlertDialogBuilder()
             .apply {
+                ScreenTags.tagDialogOf(binding.root, R.id.screen_tag_EditRepeatingEventDialog)
                 activity.setupDialogStuff(binding.root, this) { alertDialog ->
                     dialog = alertDialog
                     alertDialog.hideKeyboard()

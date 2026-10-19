@@ -8,6 +8,7 @@ import org.fossify.calendar.databinding.DialogRepeatLimitTypePickerBinding
 import org.fossify.calendar.extensions.config
 import org.fossify.calendar.extensions.seconds
 import org.fossify.calendar.helpers.Formatter
+import org.fossify.calendar.helpers.ScreenTags
 import org.fossify.calendar.helpers.getNowSeconds
 import org.fossify.commons.extensions.*
 import org.fossify.commons.helpers.getJavaDayOfWeekFromISO
@@ -39,6 +40,7 @@ class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Long,
             .setPositiveButton(org.fossify.commons.R.string.ok) { _, _ -> confirmRepetition() }
             .setNegativeButton(org.fossify.commons.R.string.cancel, null)
             .apply {
+                ScreenTags.tagDialogOf(binding.root, R.id.screen_tag_RepeatLimitTypePickerDialog)
                 activity.setupDialogStuff(binding.root, this) { alertDialog ->
                     dialog = alertDialog
                     activity.currentFocus?.clearFocus()
@@ -95,6 +97,7 @@ class RepeatLimitTypePickerDialog(val activity: Activity, var repeatLimit: Long,
 
         datePicker.datePicker.firstDayOfWeek = getJavaDayOfWeekFromISO(activity.config.firstDayOfWeek)
         datePicker.show()
+        ScreenTags.tagDialog(datePicker, R.id.screen_tag_RepeatLimitTypePickerDialog_DatePicker)
     }
 
     private val repetitionLimitDateSetListener = DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->

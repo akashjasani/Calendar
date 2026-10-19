@@ -5,6 +5,7 @@ import org.fossify.calendar.R
 import org.fossify.calendar.activities.SimpleActivity
 import org.fossify.calendar.databinding.DialogManageAutomaticBackupsBinding
 import org.fossify.calendar.extensions.config
+import org.fossify.calendar.helpers.ScreenTags
 import org.fossify.commons.dialogs.FilePickerDialog
 import org.fossify.commons.extensions.getAlertDialogBuilder
 import org.fossify.commons.extensions.hideKeyboard
@@ -69,6 +70,7 @@ class ManageAutomaticBackupsDialog(private val activity: SimpleActivity, onSucce
             .setPositiveButton(org.fossify.commons.R.string.ok, null)
             .setNegativeButton(org.fossify.commons.R.string.cancel, null)
             .apply {
+                ScreenTags.tagDialogOf(binding.root, R.id.screen_tag_SettingsActivity_ManageAutomaticBackupsDialog)
                 activity.setupDialogStuff(
                     view = binding.root,
                     dialog = this,

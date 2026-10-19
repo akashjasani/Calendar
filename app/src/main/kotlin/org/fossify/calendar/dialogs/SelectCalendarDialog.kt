@@ -11,6 +11,7 @@ import org.fossify.calendar.activities.ManageCalendarsActivity
 import org.fossify.calendar.databinding.DialogSelectCalendarBinding
 import org.fossify.calendar.databinding.RadioButtonWithColorBinding
 import org.fossify.calendar.extensions.eventsHelper
+import org.fossify.calendar.helpers.ScreenTags
 import org.fossify.calendar.models.CalendarEntity
 import org.fossify.commons.extensions.beVisibleIf
 import org.fossify.commons.extensions.getAlertDialogBuilder
@@ -86,6 +87,7 @@ class SelectCalendarDialog(
 
         activity.getAlertDialogBuilder()
             .apply {
+                ScreenTags.tagDialogOf(binding.root, R.id.screen_tag_SelectCalendarDialog)
                 activity.setupDialogStuff(binding.root, this) { alertDialog ->
                     dialog = alertDialog
                 }

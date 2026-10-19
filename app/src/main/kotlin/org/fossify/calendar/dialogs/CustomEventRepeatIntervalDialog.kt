@@ -6,6 +6,7 @@ import org.fossify.calendar.R
 import org.fossify.calendar.databinding.DialogCustomEventRepeatIntervalBinding
 import org.fossify.calendar.helpers.DAY
 import org.fossify.calendar.helpers.MONTH
+import org.fossify.calendar.helpers.ScreenTags
 import org.fossify.calendar.helpers.WEEK
 import org.fossify.calendar.helpers.YEAR
 import org.fossify.commons.extensions.*
@@ -21,6 +22,7 @@ class CustomEventRepeatIntervalDialog(val activity: Activity, val callback: (sec
             .setPositiveButton(org.fossify.commons.R.string.ok) { _, _ -> confirmRepeatInterval() }
             .setNegativeButton(org.fossify.commons.R.string.cancel, null)
             .apply {
+                ScreenTags.tagDialogOf(binding.root, R.id.screen_tag_CustomEventRepeatIntervalDialog)
                 activity.setupDialogStuff(binding.root, this) { alertDialog ->
                     dialog = alertDialog
                     alertDialog.showKeyboard(binding.dialogCustomRepeatIntervalValue)

@@ -5,7 +5,9 @@ import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
 import androidx.appcompat.app.AlertDialog
+import org.fossify.calendar.R
 import org.fossify.calendar.databinding.DialogReminderWarningBinding
+import org.fossify.calendar.helpers.ScreenTags
 import org.fossify.commons.extensions.*
 
 class ReminderWarningDialog(val activity: Activity, val callback: () -> Unit) {
@@ -17,6 +19,7 @@ class ReminderWarningDialog(val activity: Activity, val callback: () -> Unit) {
             .setPositiveButton(org.fossify.commons.R.string.ok) { _, _ -> dialogConfirmed() }
             .setNeutralButton(org.fossify.commons.R.string.settings, null)
             .apply {
+                ScreenTags.tagDialogOf(binding.root, R.id.screen_tag_ReminderWarningDialog)
                 activity.setupDialogStuff(binding.root, this, org.fossify.commons.R.string.disclaimer, cancelOnTouchOutside = false) { alertDialog ->
                     alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL).setOnClickListener {
                         redirectToSettings()

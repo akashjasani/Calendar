@@ -7,6 +7,7 @@ import org.fossify.calendar.adapters.FilterCalendarAdapter
 import org.fossify.calendar.databinding.DialogExportEventsBinding
 import org.fossify.calendar.extensions.config
 import org.fossify.calendar.extensions.eventsHelper
+import org.fossify.calendar.helpers.ScreenTags
 import org.fossify.commons.dialogs.FilePickerDialog
 import org.fossify.commons.extensions.beGone
 import org.fossify.commons.extensions.beVisible
@@ -80,6 +81,7 @@ class ExportEventsDialog(
             .setPositiveButton(org.fossify.commons.R.string.ok, null)
             .setNegativeButton(org.fossify.commons.R.string.cancel, null)
             .apply {
+                ScreenTags.tagDialogOf(binding.root, R.id.screen_tag_SettingsActivity_ExportEventsDialog)
                 activity.setupDialogStuff(
                     view = binding.root,
                     dialog = this,

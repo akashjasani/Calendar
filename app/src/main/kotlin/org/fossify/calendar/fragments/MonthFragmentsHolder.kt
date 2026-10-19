@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
 import androidx.viewpager.widget.ViewPager
+import org.fossify.calendar.R
 import org.fossify.calendar.activities.MainActivity
 import org.fossify.calendar.adapters.MyMonthPagerAdapter
 import org.fossify.calendar.databinding.FragmentMonthsHolderBinding
@@ -15,6 +16,7 @@ import org.fossify.calendar.extensions.getMonthCode
 import org.fossify.calendar.helpers.DAY_CODE
 import org.fossify.calendar.helpers.Formatter
 import org.fossify.calendar.helpers.MONTHLY_VIEW
+import org.fossify.calendar.helpers.ScreenTags
 import org.fossify.calendar.interfaces.NavigationListener
 import org.fossify.commons.extensions.beGone
 import org.fossify.commons.extensions.getAlertDialogBuilder
@@ -119,6 +121,7 @@ class MonthFragmentsHolder : MyFragmentHolder(), NavigationListener {
             .setNegativeButton(org.fossify.commons.R.string.cancel, null)
             .setPositiveButton(org.fossify.commons.R.string.ok) { _, _ -> datePicked(dateTime, datePicker) }
             .apply {
+                ScreenTags.tagDialogOf(datePicker, R.id.screen_tag_GoToDateDialog)
                 activity?.setupDialogStuff(datePicker, this)
             }
     }

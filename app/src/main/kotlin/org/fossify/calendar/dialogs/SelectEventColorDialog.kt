@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog
 import org.fossify.calendar.R
 import org.fossify.calendar.adapters.CheckableColorAdapter
 import org.fossify.calendar.databinding.DialogSelectColorBinding
+import org.fossify.calendar.helpers.ScreenTags
 import org.fossify.calendar.views.AutoGridLayoutManager
 import org.fossify.commons.extensions.getAlertDialogBuilder
 import org.fossify.commons.extensions.setupDialogStuff
@@ -34,6 +35,7 @@ class SelectEventColorDialog(val activity: Activity, val colors: IntArray, var c
                     dialog?.dismiss()
                 }
 
+                ScreenTags.tagDialogOf(binding.root, R.id.screen_tag_EventActivity_SelectEventColorDialog)
                 activity.setupDialogStuff(binding.root, this, R.string.event_color) {
                     dialog = it
                 }
