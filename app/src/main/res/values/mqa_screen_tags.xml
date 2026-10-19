@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  mqa screen tags (skill android-screen-tags, rule 5). These are only NAMES: nothing in a layout uses them.
+  ScreenTags.kt attaches them at run time, and only when BuildConfig.EXPOSE_TEST_TAGS is true (debug, uat).
+  A name is a code name, never visible text. A dot marks an overlay: <Host>.<Kind>.
+-->
+<resources>
+    <!-- Activities -->
+    <item name="screen_tag_EventActivity" type="id" />
+    <item name="screen_tag_TaskActivity" type="id" />
+    <item name="screen_tag_SelectTimeZoneActivity" type="id" />
+    <item name="screen_tag_SettingsActivity" type="id" />
+    <item name="screen_tag_ManageCalendarsActivity" type="id" />
+    <item name="screen_tag_WidgetMonthlyConfigureActivity" type="id" />
+    <item name="screen_tag_WidgetListConfigureActivity" type="id" />
+    <item name="screen_tag_WidgetDateConfigureActivity" type="id" />
+    <item name="screen_tag_AboutActivity" type="id" />
+    <item name="screen_tag_CustomizationActivity" type="id" />
+
+    <!-- The view types of MainActivity (user-selectable top-level views) -->
+    <item name="screen_tag_DayFragmentsHolder" type="id" />
+    <item name="screen_tag_WeekFragmentsHolder" type="id" />
+    <item name="screen_tag_MonthFragmentsHolder" type="id" />
+    <item name="screen_tag_MonthDayFragmentsHolder" type="id" />
+    <item name="screen_tag_YearFragmentsHolder" type="id" />
+    <item name="screen_tag_EventListFragment" type="id" />
+
+    <!-- Overlays opened from one screen: <Host>.<Kind> -->
+    <item name="screen_tag_EventActivity.DatePicker" type="id" />
+    <item name="screen_tag_EventActivity.TimePicker" type="id" />
+    <item name="screen_tag_EventActivity.SelectEventColorDialog" type="id" />
+    <item name="screen_tag_TaskActivity.DatePicker" type="id" />
+    <item name="screen_tag_TaskActivity.TimePicker" type="id" />
+    <item name="screen_tag_SettingsActivity.TimePicker" type="id" />
+    <item name="screen_tag_SettingsActivity.ExportEventsDialog" type="id" />
+    <item name="screen_tag_SettingsActivity.ManageAutomaticBackupsDialog" type="id" />
+    <item name="screen_tag_SettingsActivity.DateTimePatternInfoDialog" type="id" />
+    <item name="screen_tag_SettingsActivity.ManageSyncedCalendarsDialog" type="id" />
+    <item name="screen_tag_WidgetListConfigureActivity.CustomPeriodPickerDialog" type="id" />
+    <item name="screen_tag_RepeatLimitTypePickerDialog.DatePicker" type="id" />
+
+    <!-- Overlays opened from several screens or from a shared menu: <Kind> alone (rule 3) -->
+    <item name="screen_tag_GoToDateDialog" type="id" />
+    <item name="screen_tag_ManageHolidaysDialog" type="id" />
+    <item name="screen_tag_SetRemindersDialog" type="id" />
+    <item name="screen_tag_SelectCalendarsDialog" type="id" />
+    <item name="screen_tag_SelectCalendarDialog" type="id" />
+    <item name="screen_tag_EditCalendarDialog" type="id" />
+    <item name="screen_tag_SelectCalendarColorDialog" type="id" />
+    <item name="screen_tag_ImportEventsDialog" type="id" />
+    <item name="screen_tag_DeleteEventDialog" type="id" />
+    <item name="screen_tag_EditRepeatingEventDialog" type="id" />
+    <item name="screen_tag_ReminderWarningDialog" type="id" />
+    <item name="screen_tag_RepeatLimitTypePickerDialog" type="id" />
+    <item name="screen_tag_RepeatRuleWeeklyDialog" type="id" />
+    <item name="screen_tag_CustomEventRepeatIntervalDialog" type="id" />
+</resources>
