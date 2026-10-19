@@ -38,6 +38,8 @@ android {
         versionName = project.property("VERSION_NAME").toString()
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        // mqa screen tags (skill android-screen-tags): off here, so release and any new build type carry none.
+        buildConfigField("boolean", "EXPOSE_TEST_TAGS", "false")
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
         }
@@ -71,6 +73,7 @@ android {
     buildTypes {
         debug {
             applicationIdSuffix = ".debug"
+            buildConfigField("boolean", "EXPOSE_TEST_TAGS", "true")
         }
         release {
             isMinifyEnabled = true
@@ -83,6 +86,16 @@ android {
                 signingConfig = signingConfigs.getByName("release")
             }
         }
+        // uat: the release build (R8, same code paths) plus mqa screen tags, the screen map and the QA seeds.
+        // Signed with the debug key and installed next to the store build; never uploaded to a store.
+        create("uat") {
+            initWith(getByName("release"))
+            matchingFallbacks += "release"
+            applicationIdSuffix = ".uat"
+            proguardFile("mqa-uat.pro")
+            signingConfig = signingConfigs.getByName("debug")
+            buildConfigField("boolean", "EXPOSE_TEST_TAGS", "true")
+        }
     }
 
     flavorDimensions.add("variants")
@@ -93,6 +106,14 @@ android {
 
     sourceSets {
         getByName("main").java.directories.add("src/main/kotlin")
+        // mqa: the screen map, the seed receiver and its manifest entry exist in debug and uat only.
+        for (qaType in listOf("debug", "uat")) {
+            getByName(qaType) {
+                assets.directories.add("src/qa/assets")
+                kotlin.directories.add("src/qa/kotlin")
+                manifest.srcFile("src/qa/AndroidManifest.xml")
+            }
+        }
     }
 
     compileOptions {
@@ -131,6 +152,14 @@ android {
             enableSplit = false
         }
     }
+}
+
+// The screen-map test reads these files: declare them, or Gradle calls the test UP-TO-DATE on a stale map.
+tasks.withType<Test>().configureEach {
+    inputs.file("src/qa/assets/mqa-screens.json")
+    inputs.file("src/main/AndroidManifest.xml")
+    inputs.dir("src/main/kotlin/org/fossify/calendar/fragments")
+    inputs.file("src/main/res/values/mqa_screen_tags.xml")
 }
 
 detekt {
