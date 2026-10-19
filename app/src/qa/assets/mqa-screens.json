@@ -1,0 +1,26 @@
+{
+  "format": 1,
+  "screens": [
+    {"tag": "MonthFragmentsHolder", "roles": ["user"], "openedBy": "Monthly view", "note": "the default view of MainActivity; the others are picked with Change view"},
+    {"tag": "WeekFragmentsHolder", "roles": ["user"], "openedBy": "Weekly view"},
+    {"tag": "DayFragmentsHolder", "roles": ["user"], "openedBy": "Daily view", "note": "also opens when a day is tapped in the monthly view"},
+    {"tag": "MonthDayFragmentsHolder", "roles": ["user"], "openedBy": "Monthly and daily view"},
+    {"tag": "YearFragmentsHolder", "roles": ["user"], "openedBy": "Yearly view"},
+    {"tag": "EventListFragment", "roles": ["user"], "openedBy": "Simple event list", "scroll": {"depth": 10, "expects": ["text"]}},
+    {"tag": "EventActivity", "roles": ["user"], "openedBy": "New Event", "note": "also opens an existing event from any view"},
+    {"tag": "TaskActivity", "roles": ["user"], "openedBy": "New Task", "needs": "the setting Allow creating tasks on (the default)"},
+    {"tag": "SelectTimeZoneActivity", "roles": ["user"], "needs": "the setting Allow changing event time zones on (off by default)", "note": "opened from the time zone row of EventActivity"},
+    {"tag": "SettingsActivity", "roles": ["user"], "openedBy": "Settings"},
+    {"tag": "ManageCalendarsActivity", "roles": ["user"], "openedBy": "Manage calendars"},
+    {"tag": "CustomizationActivity", "roles": ["user"], "openedBy": "Customize colors", "note": "an activity of the Fossify Commons library, tagged from the app"},
+    {"tag": "AboutActivity", "roles": ["user"], "openedBy": "About", "note": "an activity of the Fossify Commons library, tagged from the app"},
+    {"tag": "WidgetListConfigureActivity", "roles": ["user"], "openedBy": "Customize widget colors", "note": "also opens when the event list widget is placed on the home screen"},
+    {"tag": "WidgetMonthlyConfigureActivity", "roles": ["user"], "needs": "a monthly widget being placed on the home screen", "note": "opened by the launcher only"},
+    {"tag": "WidgetDateConfigureActivity", "roles": ["user"], "needs": "a date widget being placed on the home screen", "note": "opened by the launcher only"}
+  ],
+  "seeds": {
+    "calendar-mixed": {"broadcast": "org.fossify.calendar.QA_SEED", "extras": {"scenario": "calendar-mixed"}},
+    "calendar-empty": {"broadcast": "org.fossify.calendar.QA_SEED", "extras": {"scenario": "calendar-empty"}},
+    "calendar-long": {"broadcast": "org.fossify.calendar.QA_SEED", "extras": {"scenario": "calendar-long"}}
+  }
+}
